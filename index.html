@@ -391,6 +391,19 @@
             background-color: rgba(255, 182, 193, 0.3);
             font-weight: 600;
         }
+        
+        .notification-panel .btn-small {
+            padding: 4px 8px;
+            font-size: 11px;
+            line-height: 1.2;
+            min-width: auto;
+        }
+        
+        .notification-panel .btn-danger {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 2px 8px;
+        }
 
         .time-slot {
             display: inline-block;
@@ -963,8 +976,11 @@
         <!-- Notification Panel -->
         <div id="notificationPanel" class="notification-panel">
             <div style="padding: 15px; border-bottom: 2px solid #ffb6c1; background-color: #fff0f5;">
-                <h4 style="margin: 0; color: #d63384;">Notifications</h4>
-                <button class="btn btn-secondary btn-small" onclick="markAllAsRead()" style="float: right;">Mark All Read</button>
+                <h4 style="margin: 0; color: #d63384; float: left;">Notifications</h4>
+                <div style="float: right;">
+                    <button class="btn btn-secondary btn-small" onclick="markAllAsRead()" style="margin-right: 10px;">Mark All Read</button>
+                    <button class="btn btn-danger btn-small" onclick="closeNotificationPanel()" title="Close Notifications">&times;</button>
+                </div>
                 <div style="clear: both;"></div>
             </div>
             <div id="notificationList">
@@ -2877,6 +2893,11 @@
             saveData();
             loadNotifications();
             updateNotificationCount();
+        }
+        
+        function closeNotificationPanel() {
+            const panel = document.getElementById('notificationPanel');
+            panel.style.display = 'none';
         }
 
         function updateNotificationCount() {
